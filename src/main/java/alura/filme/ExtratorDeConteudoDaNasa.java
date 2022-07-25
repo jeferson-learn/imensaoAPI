@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorDeConteudoDaNasa implements com.alura.ExtratorDeConteudo {
+public class ExtratorDeConteudoDaNasa implements ExtratorDeConteudo {
 
-    public List<com.alura.Conteudo> extraiConteudos (String json) {
+    public List<Conteudo> extraiConteudos (String json) {
         /** extrair só os dados que interessam (titulo, poster, classificação) **/
-        var parser = new com.alura.JsonParser();
+        var parser = new JsonParser();
         List<Map<String, String>> listaDeAtributos = parser.parse(json);
 
-        List<com.alura.Conteudo> conteudos = new ArrayList<>();
+        List<Conteudo> conteudos = new ArrayList<>();
 
         /** popular a lista de conteudos **/
         for (Map<String, String> atributos : listaDeAtributos) {
             String titulo = atributos.get("title").replace(":", "-");
             String urlImagem = atributos.get("url");
-            var conteudo = new com.alura.Conteudo(titulo, urlImagem);
+            var conteudo = new Conteudo(titulo, urlImagem);
 
             conteudos.add(conteudo);
         }
