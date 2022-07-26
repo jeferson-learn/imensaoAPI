@@ -1,10 +1,7 @@
 package alura.linguagem;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,7 @@ public class LinguagemController {
 //                );
 
     @GetMapping("/obter-linguagens")
-    public List<Linguagem> obterLinguagens() {
+    public List<Linguagem> obterLinguagem() {
         List<Linguagem> linguagens = repository.findAll();
         return linguagens;
     }
@@ -36,6 +33,35 @@ public class LinguagemController {
         Linguagem linguagemSalva = repository.save(linguagem);
         return linguagemSalva;
     }
+
+    @DeleteMapping("/linguagens/{id}")
+    public void apagarLinguagem(@PathVariable String id){
+        repository.deleteById(id);
+    }
+
+//    @PutMapping("/linguagens/{id}")
+//    public String atualizarLinguagem(@PathVariable String id){
+//        repository.
+//    }
+//public LanguageResponse updateLanguage(String id, LanguageUpdateRequest request) {
+//    var result = repository.findById(id);
+//
+//    if(result.isEmpty()) {
+//        throw new LanguageNotFoundException();
+//    }
+//
+//    var language = result.get();
+//    language.setImage(request.getImage());
+//    language.setRanking(request.getRanking());
+//    var saveLanguage = repository.save(language);
+//
+//    return new LanguageResponse(
+//            saveLanguage.getId(),
+//            saveLanguage.getTitle(),
+//            saveLanguage.getImage(),
+//            saveLanguage.getRanking()
+//    );
+//}
 
 
 }
