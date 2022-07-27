@@ -22,7 +22,7 @@ public class LinguagemController {
 //                        new Linguagem("Python", "https://www.richgarcia.com.br/wp-content/uploads/2021/10/python-1536x650.png", 2)
 //                );
 
-    @GetMapping("/obter-linguagens")
+    @GetMapping("/linguagens")
     public List<Linguagem> obterLinguagem() {
         List<Linguagem> linguagens = repository.findAll();
         return linguagens;
